@@ -1,0 +1,25 @@
+<div class="container-fluid mt-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h1 class="card-title"><%= @task.title %></h1>
+    <h6 class="card-subtitle mb-3 text-muted"><%= @task.details %></h6>
+    <div class="d-flex flex-row justify-content-start m-2">
+      <p class="card-text">
+        <% if @task.completed == true  %>
+          <i class="fa-regular fa-square-check m-2 align-items-center">Task is completed</i>
+          <% else %>
+          <i class="fa-regular fa-square m-2 align-items-center"></i><p>Task is unfinished</p>
+          <% end %>
+          </p>
+    </div>
+    <%= link_to "See all tasks", tasks_path, class: "btn btn-primary rounded p-2" %>
+    <%= link_to "Edit", edit_task_path(@task), class: "btn btn-primary rounded p-2" %>
+    <%= link_to task_path(@task),
+    data: { turbo_method: "delete",
+    turbo_confirm: "Are you sure?" },
+    class: 'text-decoration-none' do %>
+    <i class="fa-solid fa-trash-can text-danger m-2"></i>
+    <% end %>
+  </div>
+</div>
+</div>

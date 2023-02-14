@@ -1,0 +1,28 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.org4life.com/wp-content/uploads/2016/10/Depositphotos_72499939_m-2015.jpg);">
+  <div class="container">
+    <h1>TASKS ON TASKS ON TASKS <strong>TASKS!</strong></h1>
+    <p>Change your life and learn to task.</p>
+  </div>
+</div>
+
+
+<div class="container text-center mt-4">
+  <h1>My tasks</h1>
+    <div class="container">
+        <% @tasks.each do |task| %>
+        <div class="d-flex flex-row align-items-center mb-3 justify-content-center">
+          <% if task.completed == true  %>
+          <i class="fa-regular fa-square-check m-2"></i>
+          <% else %>
+          <i class="fa-regular fa-square m-2"></i>
+          <% end %>
+        <%= link_to task.title, task_path(task), class: 'text-decoration-none text-dark' %>
+        <%= link_to task_path(task),
+          data: { turbo_method: "delete", turbo_confirm: "Are you sure?" }, class: 'text-decoration-none' do %>
+          <i class="fa-solid fa-trash-can text-danger m-2"></i>
+          <% end %>
+        </div>
+        <% end %>
+    </div>
+  <i class="fa-solid fa-plus text-primary"></i><%= link_to 'Create new task', new_task_path, class: 'text-decoration-none text-primary' %>
+</div>
